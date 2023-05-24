@@ -116,6 +116,22 @@ export interface Client {
     documents?: File[]
 }
 
+export interface Applicant {
+    name: string
+    utilityCompany: string
+    accountId: string
+    status: ApplicantStatus
+    propertyAddress: string
+    applied: Date
+    notes?: [string]
+    eligibilityStatuses?: {
+        question: string
+        answer: boolean
+    }
+    documents?: [String]
+    otherQuestions?: [string]
+}
+
 export enum ApplicantStatus {
     AwaitingUtility = 'Awaiting Utility',
     AwaitingAccessH2O = 'Awaiting AccessH2O',
@@ -134,21 +150,6 @@ export const ApplicantStatusColor: { [key in ApplicantStatus]: string } = {
     [ApplicantStatus.Terminated]: '#C5C7CA'
 }
 
-export interface Applicant {
-    name: string
-    utilityCompany: string
-    accountId: string
-    status: ApplicantStatus
-    propertyAddress: string
-    applied: Date
-    notes?: [string]
-    eligibilityStatuses?: {
-        question: string
-        answer: boolean
-    }
-    documents?: [String]
-    otherQuestions?: [string]
-}
 
 export interface Status {
     accountId: string

@@ -1,0 +1,57 @@
+.root {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-right: 35px;
+    padding-bottom: 8px;
+}
+
+.logo1 {
+    background: url('../../assets/images/accessh2owater.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    margin: -10px 0px 0px 20px;
+    width: 47px;
+    height: 70px;
+}
+
+.logo2 {
+    background: url('../../assets/images/AccessH2O.png');
+    background-repeat: no-repeat;
+    padding-left: 10px;
+    width: 131px;
+    height: 40px;
+}
+
+.profile {
+    width: 20px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    background: lightgray;
+    color: white;
+    cursor: pointer;
+}
+
+.profilebutton {
+    position: absolute;
+    display: inline;
+    right: 0;
+    transform: scale(1.6);
+}
+
+.addPartner {
+    background: transparent;
+    border: transparent;
+    color: black;
+    margin-right: 3rem;
+    cursor: pointer;
+}
+
+.editForm {
+    background: transparent;
+    border: transparent;
+    color: black;
+    margin-right: 3rem;
+    cursor: pointer;
+}

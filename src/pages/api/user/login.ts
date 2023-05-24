@@ -1,3 +1,4 @@
+import { setCookie } from "cookies-next";
 import { NextApiRequest, NextApiResponse } from "next/types";
 import { login } from "server/mongodb/actions/User";
 import APIWrapper from "server/utils/APIWrapper";
@@ -9,8 +10,11 @@ export default APIWrapper({
         handler: async (req: NextApiRequest, res: NextApiResponse) => {
             const accessToken = await login(req.body)
             const refreshToken = getRefreshToken(req.body)
-            res.setHeader('Set-Cookie',
-                `refreshtoken=${refreshToken}; HttpOnly`);
+            setCookie('refreshtoken', refreshToken, {
+                httpOnly: true,
+                req: req,
+                res: res
+            })
             return accessToken;
         },
     },

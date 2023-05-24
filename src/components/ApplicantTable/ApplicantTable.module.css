@@ -1,0 +1,91 @@
+.root {
+    margin: 0px 50px 50px 50px;
+    background: white;
+    border-radius: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchBar {
+    color: #eeeeee;
+    margin: 25px 0px 14px 20px;
+    padding-right: 8px;
+}
+
+.searchBox {
+    width: 296px;
+    height: 42px;
+    color: #eeeeee;
+    font-size: 18px;
+}
+
+.searchFilterText {
+    width: 126px;
+    height: 42px;
+    background: white;
+    border-radius: 8px;
+    border-bottom: none;
+    text-align: center;
+    font-size: 18px;
+}
+
+.searchFilterText {
+    background: white;
+}
+
+.dateInput {
+    margin: 0px 0px 14px 20px;
+}
+
+.dateInputText {
+    width: 270px;
+    height: 42px;
+    font-size: 18px;
+}
+
+.addCustomerButton {
+    background: #3f78b5;
+    color: white;
+    border-color: transparent;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 150px;
+    height: 42px;
+    margin: 25px 23px 14px 0px;
+}
+
+.tableHeader {
+    background: white;
+    justify-content: center;
+}
+
+.tableHeaderText {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.cell {
+    font-size: 16px;
+}
+
+.status {
+    padding: 6px;
+    border-radius: 8px;
+}
+
+.deleteButton {
+    color: #f02052;
+}
+
+.addCustomerButton:hover {
+    cursor: pointer;
+}
+
+.highlightOnHover:hover {
+    background-color: #e9f2f9;
+    cursor: pointer;
+}

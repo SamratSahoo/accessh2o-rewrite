@@ -12,6 +12,7 @@ import {
 } from "src/utils/types";
 import jwt, { TokenExpiredError } from 'jsonwebtoken'
 import { getOneById } from "server/mongodb/actions/User";
+import { getCookie, setCookie } from "cookies-next";
 
 interface RouteConfig {
     requireToken?: boolean;
@@ -62,6 +63,11 @@ function APIWrapper(
                             throw new Error(Errors.token.IS_INVALID)
                         }
                         // Verify the refresh token
+                        const refreshToken = getCookie('refreshtoken', {
+                            httpOnly: true,
+                            req: req,
+                            res: res
+                        })
                         const userId = verifyRefreshToken(req.cookies.refreshtoken as string)
                         // get user from refresh token
                         user = await getOneById(userId?._id as unknown as ObjectId)
@@ -74,8 +80,11 @@ function APIWrapper(
                         tokenSettings = {
                             accessToken: getAccessToken(user as User),
                         }
-                        res.setHeader('Set-Cookie',
-                            `refreshtoken=${getRefreshToken(user as User)}; HttpOnly`);
+                        setCookie('refreshtoken', getRefreshToken(user as User), {
+                            httpOnly: true,
+                            req: req,
+                            res: res
+                        })
                     } catch {
                         return res.status(403).json({
                             success: false,

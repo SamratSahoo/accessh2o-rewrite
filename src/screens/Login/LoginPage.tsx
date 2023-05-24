@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-misused-promises, @typescript-eslint/strict-boolean-expressions */
+/* eslint-disable  */
 
 import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
 import { login, getCurrentUser } from 'src/actions/User'
-// import urls from '../../../utils/urls'
 import classes from './LoginPage.module.css'
 import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
@@ -97,35 +96,5 @@ const LoginPage = (): JSX.Element => {
         </div>
     )
 }
-
-// LoginPage.getInitialProps = async (ctx: NextPageContext) => {
-//     const req = ctx.req
-//     const user =
-//         req != null
-//             ? await getCurrentUser(req.headers?.cookie)
-//             : await getCurrentUser(null)
-
-//     if (user && ctx.res != null) {
-//         if (!user.isUtilityCompany) {
-//             ctx.res.writeHead(302, {
-//                 Location: urls.pages.accessh2oView.applicants,
-//                 'Content-Type': 'text/html; charset=utf-8'
-//             })
-//             ctx.res.end()
-//             // Router.push(urls.pages.accessh2oView.applicants)
-//         } else {
-//             ctx.res.writeHead(302, {
-//                 Location: urls.pages.utilityView.applicants,
-//                 'Content-Type': 'text/html; charset=utf-8'
-//             })
-//             ctx.res.end()
-//             // Router.push(urls.pages.utilityView.applicants)
-//         }
-//     }
-//     console.log('login redirects')
-//     console.log(user !== null && ctx.res !== null)
-
-//     return {}
-// }
 
 export default LoginPage

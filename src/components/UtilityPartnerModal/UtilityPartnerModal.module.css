@@ -1,0 +1,94 @@
+.modalOverflow {
+    overflow-y: scroll;
+}
+
+.modalWrapper {
+    width: 30rem;
+    margin: 4rem auto;
+    background: white;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.modalWrapper2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 35rem;
+    margin: 2rem auto;
+    background: white;
+    box-sizing: border-box;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid #9a9a9a;
+    padding: 5rem 2rem;
+    text-align: center;
+    vertical-align: center;
+}
+
+.modalHeader {
+    background: white;
+
+    display: flex;
+    padding: 1rem 2rem;
+    justify-content: space-between;
+}
+
+.modalContent {
+    padding: 2rem;
+}
+
+.closeButton {
+    cursor: pointer;
+}
+
+.submitContainer {
+    margin-top: 1rem;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 8px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    align-self: center;
+    width: 98%;
+}
+
+.rowContainer {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.inputMuti {
+    line-height: 2rem;
+}
+
+.logo {
+    background-image: url('../../assets/images/check.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    width: 100px;
+    height: 100px;
+}
+
+.selector {
+    padding: 18.5px 14px;
+    height: auto;
+    border: 0.01px solid rgb(197, 195, 195);
+    border-radius: 4px;
+}
+
+.btnSubmit {
+    width: '15%';
+    background-color: #4dbaea;
+    color: #ffffff;
+    border-radius: 8px;
+}

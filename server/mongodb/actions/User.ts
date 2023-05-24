@@ -5,7 +5,7 @@ import CompanySchema from '../models/Company'
 import * as EmailValidator from 'email-validator';
 import dbConnect from 'server/utils/dbConnect'
 import UserModel from 'server/mongodb/models/User'
-import { Errors, PartialUser, User } from 'src/utils/types'
+import { Errors, PartialUser, Role, User } from 'src/utils/types'
 import { ObjectId } from 'mongoose'
 import { getAccessToken } from 'server/utils/Authentication'
 
@@ -48,7 +48,7 @@ export async function login({ email, password }: { email: string, password: stri
 //   user = await User.create({
 //     email,
 //     password: hashedPassword,
-//     isUtilityCompany: false
+//     roles: [Role.NONPROFIT_ADMIN]
 //   })
 
 //   if (!user) throw new Error(errors.user.INVALID_ATTRIBUTES)
@@ -87,7 +87,7 @@ export async function signUp({ email, password, utilityCompanyName }: {
     user = await UserModel.create({
         email,
         password: hashedPassword,
-        isUtilityCompany: true
+        roles: [Role.UTILITY_COMPANY]
     })
 
     if (!user) throw new Error(Errors.user.INVALID_ATTRIBUTES)
