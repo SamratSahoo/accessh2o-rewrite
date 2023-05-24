@@ -1,0 +1,89 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.welcomeText {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.infoText {
+    font-size: 15px;
+    font-weight: bolder;
+    align-self: center;
+}
+
+.form {
+    flex: 5 0;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    background: #ffffff;
+    margin-top: -35px;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    align-self: center;
+    width: 40%;
+    max-width: 700px;
+}
+
+.inputLabel {
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 12px;
+}
+
+.input {
+    font-size: 14px;
+    background: #eeeeee;
+}
+
+.bttn {
+    width: 132px;
+    height: 45px;
+    outline: none;
+    color: #ffffff;
+    background-color: #3f78b5;
+    border: 0;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    /* max-width: 100px; */
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+.bttn:hover {
+    background: #239edb;
+}
+
+.logo {
+    background: url('../../assets/images/access-h20-logo.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    padding-top: 400px;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.buttonText {
+    margin-left: 8px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.switchText {
+    margin-top: auto;
+    text-align: center;
+}
