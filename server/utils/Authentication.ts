@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
-import { User } from 'src/utils/types'
+import { User, DecodedToken } from 'src/utils/types'
+import { getUserByEmail } from 'server/mongodb/actions/User'
 
 export const getUser = (accesstoken: string): User | null => {
     if (!accesstoken) {
@@ -30,8 +31,14 @@ export const getAccessToken = (data: Partial<User> | User): string => {
     })
 }
 
-export const getRefreshToken = (data: Partial<User> | User) => {
-    return jwt.sign({ userId: data._id }, process.env.JWT_SECRET as string, {
+export const getLoginRefreshToken = async (data: Partial<User> | User) => {
+    const user = await getUserByEmail(data.email as string);
+    return jwt.sign({ _id: user._id }, process.env.JWT_SECRET as string, {
+        expiresIn: '600m',
+    })
+}
+export const getRefreshToken = (data: Partial<User> | User): string => {
+    return jwt.sign({ _id: data._id }, process.env.JWT_SECRET as string, {
         expiresIn: '600m',
     })
 }
@@ -43,7 +50,32 @@ export const verifyWebToken = (webToken: string): User => {
     return data as User
 }
 
-export const verifyRefreshToken = (webToken: string): Partial<User> => {
+export const verifyRefreshToken = (webToken: string) => {
     const data = jwt.verify(webToken, process.env.JWT_SECRET as string)
-    return data as Partial<User>
+    return data;
 }
+
+export const isJwtExpired = (token: string): boolean => {
+    try {
+        const decodedToken: DecodedToken = jwt.decode(token) as DecodedToken;
+        if (decodedToken && decodedToken.exp) {
+            const currentTime = Date.now() / 1000; // Convert milliseconds to seconds
+            return decodedToken.exp < currentTime;
+        }
+    } catch (error) {
+        return true
+    }
+
+    return true; // Treat as expired if decoding fails
+}
+
+
+export const isJwtValid = (token: string): boolean => {
+    try {
+        jwt.verify(token, process.env.JWT_SECRET as jwt.Secret);
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+

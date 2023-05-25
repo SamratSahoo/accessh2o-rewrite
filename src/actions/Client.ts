@@ -5,7 +5,9 @@ import urls from "src/utils/urls"
 
 const getAllClientsUrl = urls.baseUrl + urls.api.client.getAll;
 const addClientUrl = urls.baseUrl + urls.api.client.addClient;
-const rmeoveClientUrl = urls.baseUrl + urls.api.client.removeClient;
+const removeClientUrl = urls.baseUrl + urls.api.client.removeClient;
+const getClientUrl = urls.baseUrl + urls.api.client.getClient;
+const changeStatusUrl = urls.baseUrl + urls.api.client.changeStatus;
 
 export const getAllApplicants = async () => {
     return internalRequest<Applicant[]>({
@@ -26,11 +28,31 @@ export const addClient = async (client: { [key: string]: unknown; }) => {
 
 export const removeClient = async (accountId: string) => {
     return internalRequest<Client>({
-        url: rmeoveClientUrl,
+        url: removeClientUrl,
         method: HttpMethod.DELETE,
         authRequired: true,
         queryParams: {
             accountId
         }
+    })
+}
+
+export const getClient = async (accountId: string) => {
+    return internalRequest<Client>({
+        url: getClientUrl,
+        method: HttpMethod.GET,
+        authRequired: true,
+        queryParams: {
+            accountId
+        }
+    })
+}
+
+export const changeStatus = async (status: { [key: string]: unknown; }) => {
+    return internalRequest<Client>({
+        url: changeStatusUrl,
+        method: HttpMethod.PATCH,
+        authRequired: true,
+        body: status
     })
 }

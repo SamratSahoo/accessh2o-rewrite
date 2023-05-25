@@ -5,6 +5,8 @@ import { getUser } from "server/utils/Authentication";
 export default APIWrapper({
     GET: {
         config: {
+            requireToken: true,
+            skipIfNoToken: true
         },
         handler: async (req: NextApiRequest, res: NextApiResponse) => {
             if (!req.headers.accesstoken) {

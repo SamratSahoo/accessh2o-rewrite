@@ -1,5 +1,5 @@
 import classes from './UtilityPartnerModal.module.css'
-import { Button, Modal, TextField, FormControl, FormLabel } from '@material-ui/core'
+import { Button, TextField, FormControl, FormLabel, Dialog } from '@material-ui/core'
 import { useState } from 'react'
 import Stack from '@mui/material/Stack'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
@@ -31,7 +31,7 @@ export const UtilityPartnerModal = ({ shouldShowModal, onClose }: PropTypes): JS
         onClose()
     }
     return (
-        <Modal className={classes.modalOverflow} open={shouldShowModal} onClose={onClose}>
+        <Dialog className={classes.modalOverflow} open={shouldShowModal} onClose={onClose}>
             {showAdd
                 ? <div className={classes.modalWrapper}>
                     <div className={classes.modalHeader}>
@@ -125,6 +125,6 @@ export const UtilityPartnerModal = ({ shouldShowModal, onClose }: PropTypes): JS
                     </Button>
                 </div>
             }
-        </Modal>
+        </Dialog>
     )
 }

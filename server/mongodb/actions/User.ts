@@ -9,7 +9,7 @@ import { Errors, PartialUser, Role, User } from 'src/utils/types'
 import { ObjectId } from 'mongoose'
 import { getAccessToken } from 'server/utils/Authentication'
 
-async function getUserByEmail(email: string): Promise<any> {
+export async function getUserByEmail(email: string): Promise<any> {
     await dbConnect()
     const user = await UserModel.findOne({ email: email })
     return user

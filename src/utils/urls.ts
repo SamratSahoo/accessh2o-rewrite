@@ -16,7 +16,7 @@ function getBaseURL() {
     return 'http://localhost:3000'
 }
 
-export default {
+const urls = {
     baseUrl: getBaseURL(),
     dbUrl: process.env.MONGO_DB ?? 'mongodb://localhost:27017',
     pages: {
@@ -84,3 +84,5 @@ export default {
         }
     }
 }
+
+export default urls;

@@ -1,0 +1,70 @@
+.modalwrapper {
+    box-sizing: border-box;
+    background: white;
+    border-radius: 10px;
+    width: 36rem;
+    max-width: 780px;
+    height: auto;
+    margin: 8rem auto;
+    justify-content: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+        'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.header {
+    padding-top: 1.5rem;
+    padding-left: 2.5rem;
+    padding-bottom: 1rem;
+    font-weight: 400;
+}
+
+.textContainer {
+    border-style: solid hidden;
+    border-color: #c2c1c1;
+    border-width: 0.1rem;
+    font-size: large;
+}
+
+.text {
+    padding: 2.5rem;
+    margin: 0px;
+    padding-bottom: 0px;
+    font-family: Roboto;
+    margin-bottom: 0px;
+}
+
+.textTwo {
+    padding: 2.5rem;
+    font-family: Roboto;
+    padding-top: 0rem;
+    margin-top: 0px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin: 3rem;
+    padding-bottom: 2rem;
+}
+
+.saveChange {
+    background: #3f78b5;
+    border-radius: 8px;
+    border-color: transparent;
+    width: 7rem;
+    height: 2.3rem;
+    color: white;
+    font-weight: 400;
+    margin-right: 10px;
+    font-size: medium;
+    cursor: pointer;
+}
+
+.customerButton {
+    text-decoration: none;
+    color: rgb(156, 155, 155);
+    border-radius: 8px;
+    padding: 8px 20px 8px 20px;
+    font-weight: 400;
+    cursor: pointer;
+}

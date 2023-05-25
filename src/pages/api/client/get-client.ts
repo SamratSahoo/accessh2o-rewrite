@@ -10,8 +10,8 @@ export default APIWrapper({
             roles: [Role.UTILITY_COMPANY, Role.NONPROFIT_ADMIN]
         },
         handler: async (req: NextApiRequest, res: NextApiResponse) => {
-            const clients = await getClient(req.query.accountId as string)
-            return clients;
+            const client = await getClient(req.query.accountId as string)
+            return client;
         },
     },
 });

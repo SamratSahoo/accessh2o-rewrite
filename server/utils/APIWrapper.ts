@@ -1,7 +1,7 @@
 // Modified API Wrapper Inspired By Nationals NPP Portal: https://github.com/GTBitsOfGood/national-npp/blob/main/server/utils/APIWrapper.ts
 import mongoose, { ObjectId } from "mongoose";
 import { NextApiResponse } from "next";
-import { getAccessToken, getRefreshToken, getUser, verifyRefreshToken } from "server/utils/Authentication";
+import { getAccessToken, getRefreshToken, getUser, isJwtExpired, isJwtValid, verifyRefreshToken } from "server/utils/Authentication";
 import {
     Errors,
     HttpMethod,
@@ -12,11 +12,12 @@ import {
 } from "src/utils/types";
 import jwt, { TokenExpiredError } from 'jsonwebtoken'
 import { getOneById } from "server/mongodb/actions/User";
-import { getCookie, setCookie } from "cookies-next";
+import { CookieValueTypes, getCookie, setCookie } from "cookies-next";
 
 interface RouteConfig {
     requireToken?: boolean;
     roles?: Array<Role>;
+    skipIfNoToken?: boolean;
     handleResponse?: boolean;
 }
 
@@ -53,24 +54,27 @@ function APIWrapper(
             let tokenSettings = {}
             // Handle user access token + roles restrictions
             if (config?.requireToken) {
-                let user: null | User = null;
-                try {
-                    // Try to get user
-                    user = getUser(req.headers.accesstoken as string);
-                } catch (err) {
-                    try {
-                        if (!(err instanceof TokenExpiredError)) {
-                            throw new Error(Errors.token.IS_INVALID)
-                        }
-                        // Verify the refresh token
-                        const refreshToken = getCookie('refreshtoken', {
-                            httpOnly: true,
-                            req: req,
-                            res: res
+                if (!req.headers.accesstoken && config?.skipIfNoToken !== undefined) {
+                    console.log("Skipping, no token")
+                } else {
+                    let user: null | User = null;
+                    const refreshToken: CookieValueTypes = getCookie('refreshtoken', {
+                        httpOnly: true,
+                        req: req,
+                        res: res
+                    })
+
+                    if (isJwtExpired(req.headers.accesstoken as string) && !isJwtValid(
+                        refreshToken as string)) {
+                        return res.status(403).json({
+                            success: false,
+                            message: Errors.token.IS_INVALID,
                         })
-                        const userId = verifyRefreshToken(req.cookies.refreshtoken as string)
-                        // get user from refresh token
-                        user = await getOneById(userId?._id as unknown as ObjectId)
+                    }
+                    // if accesstoken is expired, create new one
+                    else if (isJwtExpired(req.headers.accesstoken as string)) {
+                        const userId = verifyRefreshToken(refreshToken as string)
+                        user = await getOneById(((userId as Partial<User>)?._id) as unknown as string)
                         if (!user) {
                             return res.status(403).json({
                                 success: false,
@@ -85,29 +89,24 @@ function APIWrapper(
                             req: req,
                             res: res
                         })
-                    } catch {
-                        return res.status(403).json({
-                            success: false,
-                            message: Errors.token.IS_INVALID,
-                        });
+                    } else {
+                        user = getUser(req.headers.accesstoken as string);
+                    }
+
+                    if (config.roles) {
+                        if (
+                            config.roles.length !== 0 &&
+                            !config.roles.some((role) => user?.roles?.includes(role))
+                        ) {
+                            return res.status(403).json({
+                                success: false,
+                                message: Errors.user.MISSING_PERMISSIONS,
+                            });
+                        }
                     }
                 }
-
-                if (config.roles) {
-                    if (
-                        config.roles.length !== 0 &&
-                        !config.roles.some((role) => user?.roles?.includes(role))
-                    ) {
-                        return res.status(403).json({
-                            success: false,
-                            message: Errors.user.MISSING_PERMISSIONS,
-                        });
-                    }
-                }
-
             }
             const data = await handler(req, res);
-
             if (config?.handleResponse) {
                 return;
             }

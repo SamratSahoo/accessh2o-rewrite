@@ -173,6 +173,10 @@ export interface User {
 
 export type PartialUser = Omit<User, "_id">
 
+export interface DecodedToken {
+    exp: number;
+}
+
 export const Errors = {
     general: {
         DB_CONNECTION: 'An error occurred while connecting to the database.'
