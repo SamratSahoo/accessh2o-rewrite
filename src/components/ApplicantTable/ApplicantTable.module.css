@@ -58,14 +58,22 @@
     margin: 25px 23px 14px 0px;
 }
 
+.tableContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .tableHeader {
     background: white;
-    justify-content: center;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .tableHeaderText {
     font-weight: bold;
-    font-size: 30px;
+    font-size: 16px;
 }
 
 .cell {

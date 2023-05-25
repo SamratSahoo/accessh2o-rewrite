@@ -1,3 +1,3 @@
-import ApplicantViewPage from 'src/screens/AccessH2OView/ApplicantView/';
+import ApplicantViewPage from 'src/screens/AccessH2OView/ApplicantView/'
 
 export default ApplicantViewPage

@@ -1,15 +1,15 @@
-import APIWrapper from "server/utils/APIWrapper";
+import APIWrapper from 'server/utils/APIWrapper'
 
 export default APIWrapper({
   GET: {
     config: {
-      requireToken: false,
+      requireToken: false
     },
     handler: async () => {
       return {
-        Hello: "World",
-        Version: 2.0,
-      };
-    },
-  },
-});
+        Hello: 'World',
+        Version: 2.0
+      }
+    }
+  }
+})

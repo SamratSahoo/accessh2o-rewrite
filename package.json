@@ -6,7 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier \"**/*.{js,jsx,ts,tsx}\" --write",
+    "format:check": "prettier \"**/*.{js,jsx,ts,tsx}\" -l",
+    "secrets": "npm run secrets:logout && cross-env-shell BW_SESSION=`bw login product@bitsofgood.org --raw` \"npm run secrets:sync\"",
+    "secrets:logout": "(bw logout || exit 0)",
+    "secrets:login": "bw login product@bitsofgood.org",
+    "secrets:sync": "bw sync && bw get item 54baaf4d-8bff-4ad9-9026-ae36001db984 | fx .notes > \".env.local\""
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.{js,jsx,css}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
@@ -34,6 +48,8 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.13",
-    "@types/jsonwebtoken": "^9.0.2"
+    "@types/jsonwebtoken": "^9.0.2",
+    "prettier": "2.5.1",
+    "prettier-eslint": "^13.0.0"
   }
 }
