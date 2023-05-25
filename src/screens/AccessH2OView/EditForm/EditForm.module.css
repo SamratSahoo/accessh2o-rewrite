@@ -1,0 +1,107 @@
+.background {
+    background-color: #e9f2f9;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+}
+
+.body {
+    border-radius: 6px;
+    margin: 5%;
+    padding-top: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+.backButton {
+    margin-left: 70px;
+    color: #9a9a9a;
+    text-decoration: none;
+}
+
+.divider {
+    margin: 0px 70px 0px 70px;
+}
+
+.pageTitle,
+.sectionTitle {
+    margin-left: 70px;
+}
+
+.questionType {
+    display: flex;
+    margin-right: 20%;
+}
+
+.statusSection,
+.docSection,
+.additSection {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 10px;
+}
+
+.statusSection {
+    left: 16%;
+}
+
+.docSection,
+.additSection {
+    left: 15%;
+}
+
+.questions {
+    display: flex;
+}
+
+.editQuestionsContainer {
+    margin-left: 35px;
+}
+
+.editQuestions {
+    margin-top: 10px;
+}
+
+.delete {
+    display: inline-flex;
+}
+
+.editButton {
+    margin: 15px 15px 0px 0px;
+    color: #4dbaea;
+}
+
+.title {
+    font-weight: bolder;
+}
+
+.description {
+    color: #a1a1a1;
+}
+
+.inputRoot {
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: #9a9a9a;
+    min-width: fit-content;
+}
+
+.save {
+    margin: 10px 0px 30px 0px;
+    background-color: #3f78b5;
+    color: white;
+}
+
+.cancel {
+    margin: 10px 0px 30px 20px;
+    color: #9a9a9a;
+}
+
+.reqButton {
+    color: #4dbaea;
+    background: none;
+    width: fit-content;
+    margin: 0px 0px 20px 25px;
+}

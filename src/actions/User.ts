@@ -5,6 +5,7 @@ import urls from "src/utils/urls"
 const getCurrentUrl = urls.baseUrl + urls.api.user.getCurrent;
 const loginUrl = urls.baseUrl + urls.api.user.login;
 const signUpUrl = urls.baseUrl + urls.api.user.signUp;
+const userUpdateUrl = urls.baseUrl + urls.api.user.update;
 
 export const getCurrentUser = async () => {
     return internalRequest<User | null>({
@@ -36,5 +37,14 @@ export const signUp = async (email: string, password: string, utilityCompanyName
             password: password,
             utilityCompanyName: utilityCompanyName
         }
+    })
+}
+
+export const updateUser = async (user: User | Partial<User>) => {
+    return internalRequest<User>({
+        url: userUpdateUrl,
+        method: HttpMethod.PATCH,
+        authRequired: false,
+        body: user as unknown as ({ [key: string]: unknown })
     })
 }

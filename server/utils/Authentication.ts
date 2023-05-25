@@ -27,7 +27,7 @@ export const comparePassword = async (
 
 export const getAccessToken = (data: Partial<User> | User): string => {
     return jwt.sign(data, process.env.JWT_SECRET as string, {
-        expiresIn: '15m',
+        expiresIn: '1m',
     })
 }
 
@@ -38,9 +38,7 @@ export const getLoginRefreshToken = async (data: Partial<User> | User) => {
     })
 }
 export const getRefreshToken = (data: Partial<User> | User): string => {
-    return jwt.sign({ _id: data._id }, process.env.JWT_SECRET as string, {
-        expiresIn: '600m',
-    })
+    return jwt.sign({ _id: data._id }, process.env.JWT_SECRET as string)
 }
 
 export const verifyWebToken = (webToken: string): User => {
@@ -72,7 +70,9 @@ export const isJwtExpired = (token: string): boolean => {
 
 export const isJwtValid = (token: string): boolean => {
     try {
-        jwt.verify(token, process.env.JWT_SECRET as jwt.Secret);
+        jwt.verify(token, process.env.JWT_SECRET as string, {
+            ignoreExpiration: true
+        });
         return true;
     } catch (error) {
         return false;

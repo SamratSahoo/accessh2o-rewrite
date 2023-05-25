@@ -8,7 +8,7 @@ export default APIWrapper({
             requireToken: false,
         },
         handler: async (req: NextApiRequest, res: NextApiResponse) => {
-            const question = await removeDocumentQuestion(req.body)
+            const question = await removeDocumentQuestion(req.body.id)
             return question
         },
     },

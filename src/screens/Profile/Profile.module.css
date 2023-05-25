@@ -1,0 +1,121 @@
+.profileHeader {
+    display: flex;
+    background: white;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600 !important;
+    padding: 0.5vh 10vw;
+    width: 80%;
+}
+
+.profilePic {
+    width: 50px;
+    height: 50px;
+    background-color: #bbbbbb;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.profileContent {
+    padding: 5vh 10vw;
+    background: #ebf2f8;
+    color: #333333;
+}
+
+.profileForm {
+    width: 35rem;
+    margin: auto;
+    background: white;
+    border: 1px solid #9a9a9a;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding-left: 1rem;
+}
+
+.profileGrayText {
+    color: #aaaaaa;
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 1em;
+    text-transform: uppercase;
+}
+
+.dashboard {
+    color: #9a9a9a;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.dashboard:hover {
+    text-decoration: underline;
+}
+
+.formElem {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 20px 0px 20px;
+}
+
+.formLine {
+    display: flex;
+    flex-direction: row;
+}
+
+.formFont {
+    color: #555555 !important;
+    font-weight: 600 !important;
+}
+
+.textElem {
+    margin-top: 8px;
+}
+
+.textHover {
+    cursor: pointer;
+}
+
+.formTitleContainer {
+    margin: 30px 20px 0px 20px;
+}
+
+.formSubmitContainer {
+    margin: 30px 20px 30px 20px;
+}
+
+.button {
+    padding: 6px 16px;
+    font-size: 0.875rem;
+    min-width: 64px;
+    box-sizing: border-box;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+        border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-family: "Roboto",
+        "Helvetica",
+        "Arial",
+        sans-serif;
+    font-weight: 500;
+    line-height: 1.75;
+    color: rgba(0, 0, 0, 0.87);
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+        0px 2px 2px 0px rgb(0 0 0 / 14%),
+        0px 1px 5px 0px rgb(0 0 0 / 12%);
+    background-color: #e0e0e0;
+    align-items: center;
+    letter-spacing: 0.02857em;
+    vertical-align: middle;
+    justify-content: center;
+    cursor: pointer;
+    border: 0;
+    margin: 0;
+    outline: 0;
+    user-select: none;
+    text-decoration: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    border-radius: 4px;
+    margin-top: 1rem;
+    width: 5rem;
+    margin-left: 26.7rem;
+    margin-bottom: 1rem;
+}

@@ -27,6 +27,8 @@ import classes from './ApplicantTable.module.css'
 import { NotesModal } from 'src/components/NotesModal/NotesModal'
 import { removeClient } from 'src/actions/Client'
 import SearchIcon from '@mui/icons-material/Search'
+import Router from 'next/router'
+import urls from 'src/utils/urls'
 
 interface PropTypes {
     isUtilityView: boolean
@@ -150,7 +152,7 @@ const ApplicantTable = ({
                         className={classes.searchBox}
                         InputProps={{
                             className: classes.searchBox,
-                            disableUnderline: true,
+                            'disableUnderline': true,
                             startAdornment: (
                                 <InputAdornment position="start">
                                     <SearchIcon
@@ -401,7 +403,8 @@ const ApplicantTable = ({
                                                     'aria-labelledby': 'basic-button'
                                                 }}
                                             >
-                                                <MenuItem onClick={handleClose}>View</MenuItem>
+                                                <MenuItem onClick={() =>
+                                                    Router.push(`${urls.baseUrl}${urls.pages.accessh2oView.infosubmit}/${applicant.accountId}`)}>View</MenuItem>
                                                 <MenuItem onClick={() => editNote(applicant.accountId)}>
                                                     Add Notes
                                                 </MenuItem>

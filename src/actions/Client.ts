@@ -20,7 +20,7 @@ export const getAllApplicants = async () => {
 export const addClient = async (client: { [key: string]: unknown; }) => {
     return internalRequest<Client>({
         url: addClientUrl,
-        method: HttpMethod.GET,
+        method: HttpMethod.POST,
         authRequired: true,
         body: client
     })

@@ -10,7 +10,8 @@ export default APIWrapper({
             roles: [Role.UTILITY_COMPANY, Role.NONPROFIT_ADMIN]
         },
         handler: async (req: NextApiRequest, res: NextApiResponse) => {
-            await addInfo(req.body)
+            const info = await addInfo(req.body)
+            return info;
         },
     },
 });
